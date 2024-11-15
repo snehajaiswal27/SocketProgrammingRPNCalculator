@@ -47,19 +47,40 @@ To start the application, follow these steps to run the server and client progra
 
 ### Steps
 
-1.  bashCopy code$ python3 xxxserver.py \*port\*
-    
-    *   # Server started on port \*port\*. Accepting connections
-        
-2.  bashCopy code$ python3 xxxclient.py \*hostname port expression\*
-    
-    *   # Sending operation: \*operation\_1\*
-        
-    *   # Received operation: \*operation\_1\*
-        
-    *   ...
-        
-    *   # Sending operation: \*operation\_n\*# Received operation: \*operation\_n\*# Total: \*final answer\*
-        
+Command: $ python3 xxxserver.py port
 
-Replace xxx with either "udp" or "tcp" depending on which protocol you want to use, and substitute _hostname_, _port_, _expression_, and _operation\_n_ with your specific values.
+Output: # Server started on port port. Accepting connections
+
+Command: $ python3 xxxclient.py hostname port expression
+
+Output (on Client): # Sending operation: operation\_1
+
+Output (on Server): # Received operation: operation\_1
+
+...
+
+Output (on Client): # Sending operation: operation\_n
+
+Output (on Server): # Received operation: operation\_n
+
+Output (on Client): # Total: final answer
+
+Replace xxx with either "udp" or "tcp" depending on which protocol you want to use, and substitute hostname, port, expression, and operation\_n with your specific values.
+
+### Example
+
+Command: $ python3 tcpserver.py 8000
+
+Output: # Server started on port 8000. Accepting connections
+
+Command: $ python3 tcpclient.py 127.0.0.1 8000 "25 5 \* 60 +"
+
+Output (on Client): # Sending operation: 25 5 \*
+
+Output (on Server): # Received operation: 25 5 \*
+
+Output (on Client): # Sending operation: 125 60 +
+
+Output (on Server): # Received operation: 125 60 +
+
+Output (on Client): # Total: 185
